@@ -14,7 +14,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="231.5"
           rx="239"
           ry="167.5"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -24,7 +24,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="410.5"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -34,7 +34,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="540.818"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -44,7 +44,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="645.818"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -54,7 +54,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="828.818"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -64,7 +64,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="688.818"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -74,7 +74,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="852.818"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -84,7 +84,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="989.818"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -94,7 +94,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="1050.82"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -104,7 +104,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="1317.82"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -114,7 +114,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="1461.82"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -124,7 +124,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="1634.82"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -134,7 +134,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="1774.82"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
@@ -144,7 +144,7 @@ export function EllipsesBackground(props: React.SVGProps<SVGSVGElement>) {
           cy="1951.82"
           rx="141"
           ry="98.818"
-          fill="#00B1B0"
+          fill="currentColor"
           fillOpacity="0.1"
         />
       </g>
