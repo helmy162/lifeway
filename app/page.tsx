@@ -65,7 +65,7 @@ export default function Home() {
         </button>
 
         {/* horizontal scroll filter bar with buttons */}
-        <div className="mb-2.5 flex w-full max-w-full items-end gap-1 overflow-x-auto rounded-lg bg-white p-1 shadow">
+        <div className="mb-2.5 flex w-full max-w-full items-end gap-1 overflow-x-auto rounded-lg bg-white p-1 shadow fancy-scroll">
           {serviceTypes.map((button) => (
             <FilterButton
               key={button.value}

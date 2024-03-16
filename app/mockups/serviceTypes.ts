@@ -15,4 +15,8 @@ export const serviceTypes = [
     label: "الليزر",
     value: "laser",
   },
+  {
+    label: "المساج",
+    value: "massage",
+  },
 ];
