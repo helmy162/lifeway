@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
+
+body {
+  font-family: "Cairo", sans-serif !important;
+  @apply font-sans;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.image-gallery-bullets {
+  bottom: -24px !important;
+}
+.image-gallery-bullets-container{
+  @apply !rotate-180
+}
+.image-gallery-bullet {
+  @apply !border !border-primary !shadow-none !bg-transparent !m-1 !p-[2px];
+}
+
+.image-gallery-bullet.active {
+  @apply !border-2;
+}
+
+.image-gallery-slides{
+  @apply !rounded-2xl;
+  box-shadow: 0px 7px 11px 0px rgba(3, 9, 28, 0.15);
+}
+
+.image-gallery-image{
+  @apply !rounded-2xl !h-[262px] !object-cover;
+}
