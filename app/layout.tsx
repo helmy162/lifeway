@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "react-image-gallery/styles/css/image-gallery.css";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,14 +16,16 @@ export default function RootLayout({
   return (
     <html lang="en" dir="rtl">
       <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
-        rel="stylesheet"
-      />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
+          rel="stylesheet"
+        />
       </head>
-      <body className="overflow-x-hidden">{children}</body>
+      <body className="overflow-x-hidden">
+        {children} <Footer />
+      </body>
     </html>
   );
 }

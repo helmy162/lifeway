@@ -19,6 +19,7 @@ const config: Config = {
         lightGray: "#909295",
         darkGray: "#6C6C6C",
         borderGray: "#E4EAF0",
+        footerBG: "#010112",
       },
     },
   },

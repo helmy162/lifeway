@@ -40,7 +40,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative w-screen max-w-[100vw] overflow-x-hidden">
+    <main className="relative w-full max-w-[100vw] overflow-x-hidden">
       <EllipsesBackground className="fixed left-0 top-0 z-[-1] w-full text-primary" />
       <div className="mx-auto flex min-h-screen max-w-[375px] flex-col items-center overflow-x-hidden px-4 py-6">
         <Image
