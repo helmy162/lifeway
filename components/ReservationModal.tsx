@@ -1,4 +1,4 @@
-import CloseIcon from '@/icons/CloseIcon';
+import CloseIcon from '@/components/icons/CloseIcon';
 import Modal from './Modal';
 import MultiSelectInput from './MultiSelectInput';
 import TextInput from './TextInput';

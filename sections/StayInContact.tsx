@@ -1,7 +1,7 @@
-import InstagramIcon from "@/icons/InstagramIcon";
-import LocationPinIcon from "@/icons/LocationPinIcon";
-import SnapchatIcon from "@/icons/SnapchatIcon";
-import WhatsappIcon from "@/icons/WhatsappIcon";
+import InstagramIcon from "@/components/icons/InstagramIcon";
+import LocationPinIcon from "@/components/icons/LocationPinIcon";
+import SnapchatIcon from "@/components/icons/SnapchatIcon";
+import WhatsappIcon from "@/components/icons/WhatsappIcon";
 
 export default function StayInContact() {
   return (

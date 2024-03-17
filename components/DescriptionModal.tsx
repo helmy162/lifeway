@@ -1,4 +1,4 @@
-import CloseIcon from '@/icons/CloseIcon';
+import CloseIcon from '@/components/icons/CloseIcon';
 import Modal from './Modal';
 import { Service } from '@/lib/types';
 import ImageGallery from 'react-image-gallery';
