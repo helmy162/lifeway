@@ -23,6 +23,7 @@ export default function DescriptionModal({
       setShowModal={(open) => {
         if (!open) setDescriptionModalService(null);
       }}
+      key={descriptionModalService?.id}
     >
       <div className="description_modal relative z-[100] flex flex-col p-7">
         <div className="mb-4 flex w-full items-center justify-between">

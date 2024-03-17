@@ -19,6 +19,7 @@ export default function ReservationConfirmationModal({
       setShowModal={(open) => {
         if (!open) setReservationDetails(null);
       }}
+      key={reservationDetails?.name}
     >
       <div className="description_modal relative z-[100] flex flex-col p-7">
         <div className="mb-4 flex w-full items-center justify-between">
