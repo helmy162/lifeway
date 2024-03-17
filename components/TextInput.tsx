@@ -22,7 +22,7 @@ const TextInput = ({
         id={name}
         name={name}
         type="text"
-        className="text-[13px] text-right font-semibold text-lightGray focus:outline-primary border border-borderGray rounded-lg p-2.5"
+        className="border-borderGray rounded-lg border p-2.5  text-right text-base font-semibold text-lightGray focus-within:!outline-none focus:!outline-primary"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
