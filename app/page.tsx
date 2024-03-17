@@ -11,6 +11,12 @@ import WhatsappIcon from "../icons/WhatsappIcon";
 import InstagramIcon from "../icons/InstagramIcon";
 import SnapchatIcon from "../icons/SnapchatIcon";
 import LocationPinIcon from "../icons/LocationPinIcon";
+import Modal from "@/components/Modal";
+import CloseIcon from "@/icons/CloseIcon";
+import LabeledSelectInput from "@/components/Select";
+import TextInput from "@/components/TextInput";
+import DatePicker from "@/components/DatePicker";
+import { periods } from "./mockups/periods";
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -39,6 +45,16 @@ export default function Home() {
     setPage(page + 1);
   };
 
+  const [reserveModalOpen, setReserveModalOpen] = useState(false);
+
+  const handleReservation = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+    console.log("Reservation data:", data);
+    setReserveModalOpen(false);
+  };
+
   return (
     <main className="relative w-full max-w-[100vw] overflow-x-hidden">
       <EllipsesBackground className="fixed left-0 top-0 z-[-1] w-full text-primary" />
@@ -60,12 +76,15 @@ export default function Home() {
           </h3>
         </div>
 
-        <button className="mb-8 h-[41px] w-[141px] rounded-lg border-2 border-primary bg-white text-sm font-semibold text-primary shadow">
+        <button
+          className="mb-8 h-[41px] w-[141px] rounded-lg border-2 border-primary bg-white text-sm font-semibold text-primary shadow"
+          onClick={() => setReserveModalOpen(true)}
+        >
           احجز الان
         </button>
 
         {/* horizontal scroll filter bar with buttons */}
-        <div className="mb-2.5 flex w-full max-w-full items-end gap-1 overflow-x-auto rounded-lg bg-white p-1 shadow fancy-scroll">
+        <div className="fancy-scroll mb-2.5 flex w-full max-w-full items-end gap-1 overflow-x-auto rounded-lg bg-white p-1 shadow">
           {serviceTypes.map((button) => (
             <FilterButton
               key={button.value}
@@ -122,7 +141,10 @@ export default function Home() {
           <h3 className="mb-1.5 text-center text-sm font-normal text-white/70">
             تابعنا على وسائل التواصل الاجتماعية
           </h3>
-          <a className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5" href="#">
+          <a
+            className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5"
+            href="#"
+          >
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white">
               <WhatsappIcon width={16} height={16} />
             </div>
@@ -130,7 +152,10 @@ export default function Home() {
               تواصل معنا على الواتس اب
             </span>
           </a>
-          <a className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5" href="#">
+          <a
+            className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5"
+            href="#"
+          >
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white">
               <SnapchatIcon width={16} height={16} />
             </div>
@@ -138,7 +163,10 @@ export default function Home() {
               تابعنا على سناب شات
             </span>
           </a>
-          <a className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5" href="#">
+          <a
+            className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5"
+            href="#"
+          >
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white">
               <InstagramIcon width={16} height={16} />
             </div>
@@ -146,7 +174,10 @@ export default function Home() {
               تابعنا على انستقرام
             </span>
           </a>
-          <a className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5" href="#">
+          <a
+            className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5"
+            href="#"
+          >
             <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white">
               <LocationPinIcon width={16} height={16} />
             </div>
@@ -155,6 +186,31 @@ export default function Home() {
             </span>
           </a>
         </div>
+
+        <Modal showModal={reserveModalOpen} setShowModal={setReserveModalOpen}>
+          <form className="relative z-[100] flex flex-col gap-4 p-7" onSubmit={handleReservation}>
+            <div className="flex w-full items-center justify-between">
+              <h2 className="text-2xl font-bold text-black">حجز موعد</h2>
+              <CloseIcon
+                onClick={() => setReserveModalOpen(false)}
+                width={24}
+                height={24}
+                className="cursor-pointer"
+              />
+            </div>
+            <LabeledSelectInput name="service" label="الخدمة" options={services} />
+            <TextInput name="name" label="الاسم" placeholder="الاسم هنا..." />
+            <TextInput name="phone" label="رقم الجوال" placeholder="05xxxxxxxx" type="tel" />
+            <DatePicker />
+            <LabeledSelectInput name="period" label="الفترة" options={periods} />
+            <h3 className="text-sm font-normal text-lightGray">
+              يمكنك الآن حجز موعدك من خلال الضغط على الزر أدناه
+            </h3>
+            <button className="py-3 px-6 rounded-lg border-2 bg-primary font-bold text-white" type="submit">
+              حجز
+            </button>
+          </form>
+        </Modal>
       </div>
     </main>
   );

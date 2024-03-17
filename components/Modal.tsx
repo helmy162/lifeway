@@ -18,7 +18,7 @@ export default function Modal({
 }) {
   const { isMobile } = useMediaQuery();
 
-  if (isMobile) {
+  if (false) {
     return (
       <Drawer.Root open={showModal} onOpenChange={setShowModal}>
         <Drawer.Overlay className="fixed inset-0 z-40 bg-gray-100 bg-opacity-10 backdrop-blur" />
@@ -39,7 +39,7 @@ export default function Modal({
     );
   }
   return (
-    <Dialog.Root open={showModal} onOpenChange={setShowModal}>
+    <Dialog.Root open={showModal} onOpenChange={(e) => console.log(e)}>
       <Dialog.Portal>
         <Dialog.Overlay
           // for detecting when there's an active opened modal
@@ -50,7 +50,7 @@ export default function Modal({
           onOpenAutoFocus={(e) => e.preventDefault()}
           onCloseAutoFocus={(e) => e.preventDefault()}
           className={`
-            animate-scale-in fixed inset-0 z-40 m-auto max-h-fit w-full max-w-md overflow-hidden border border-gray-200 bg-white p-0 shadow-xl md:rounded-2xl
+            animate-scale-in fixed inset-0 z-40 m-auto max-h-fit w-full max-w-md overflow-scroll border border-gray-200 bg-white p-0 shadow-xl md:rounded-2xl
             ${className}`}
         >
           {children}
