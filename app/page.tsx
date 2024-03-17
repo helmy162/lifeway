@@ -46,6 +46,7 @@ export default function Home() {
   };
 
   const [reserveModalOpen, setReserveModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
 
   const handleReservation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,6 +55,7 @@ export default function Home() {
     console.log("Reservation data:", data);
     setReserveModalOpen(false);
   };
+  
 
   return (
     <main className="relative w-full max-w-[100vw] overflow-x-hidden">
@@ -98,7 +100,7 @@ export default function Home() {
         {/* services grid */}
         <div className="mb-7 grid w-full grid-cols-1 gap-1.5">
           {paginatedServices.map((service: any) => (
-            <ServiceCard key={service.id} service={service} />
+            <ServiceCard key={service.id} service={service} setSelectedService={setSelectedService} setReserveModalOpen={setReserveModalOpen} />
           ))}
         </div>
 
@@ -198,7 +200,7 @@ export default function Home() {
                 className="cursor-pointer"
               />
             </div>
-            <LabeledSelectInput name="service" label="الخدمة" options={services} />
+            <LabeledSelectInput name="service" label="الخدمة" options={services} startingValue={selectedService}  />
             <TextInput name="name" label="الاسم" placeholder="الاسم هنا..." />
             <TextInput name="phone" label="رقم الجوال" placeholder="05xxxxxxxx" type="tel" />
             <DatePicker />

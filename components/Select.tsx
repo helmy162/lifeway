@@ -4,14 +4,14 @@ const LabeledSelectInput = ({
   options,
   name,
   label,
-  startingService,
+  startingValue,
 }: {
   options: { name: string;}[];
   name: string;
   label: string;
-  startingService?: string;
+  startingValue?: string;
 }) => {
-  const [value, setValue] = useState(startingService?? options[0].name);
+  const [value, setValue] = useState(startingValue?? options[0].name);
 
   return (
     <div className="border-borderGray flex flex-col gap-3 rounded-lg border p-4">
