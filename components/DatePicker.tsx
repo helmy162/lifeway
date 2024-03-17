@@ -24,19 +24,25 @@ export default function DatePicker() {
 
   return (
     <div className="w-full rounded-lg">
-        <input type="hidden" name="date" value={selectedDate} />
+      <input type="hidden" name="date" value={selectedDate} />
       <div className="mb-4 flex items-center justify-between">
         <label className="text-sm text-black">التاريخ</label>
         <div className="flex items-center">
           <button
             className="text-black disabled:cursor-not-allowed disabled:opacity-50"
+            type="button"
             onClick={handlePreviousWeek}
             disabled={currentWeek === 0}
           >
             <ChevronRightIcon className="h-5 w-5" />
           </button>
           الأسبوع
-          <button className="" onClick={handleNextWeek}>
+          <button
+            className="text-black disabled:cursor-not-allowed disabled:opacity-50"
+            type="button"
+            onClick={handleNextWeek}
+            disabled={currentWeek >= 5}
+          >
             <ChevronLeftIcon className="h-5 w-5" />
           </button>
         </div>
@@ -71,8 +77,12 @@ export default function DatePicker() {
                 isSelected ? "bg-primary/10" : "bg-transparent"
               }`}
             >
-            {isSelected && <CheckCircleIcon className="h-6 w-6 text-primary" />}
-            {!isSelected && <div className="h-6 w-6 border border-borderGray rounded-full"/>}
+              {isSelected && (
+                <CheckCircleIcon className="h-6 w-6 text-primary" />
+              )}
+              {!isSelected && (
+                <div className="border-borderGray h-6 w-6 rounded-full border" />
+              )}
 
               <h3 className="text-xs font-semibold text-black">{dayName}</h3>
               <h4 className="text-xs text-lightGray">{formattedDate}</h4>
