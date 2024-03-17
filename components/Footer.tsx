@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
         <div className="flex items-center gap-4 text-lightGray">
           <TelephoneIcon width={24} height={24} />
-          <p>+966 118 29384</p>
+          <p dir="ltr">+966 118 29384</p>
         </div>
         <div className="flex items-center gap-4 text-lightGray">
           <MailIcon width={24} height={24} />
