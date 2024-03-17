@@ -4,15 +4,21 @@ export default function ServiceCard({
   service,
   setSelectedService,
   setReserveModalOpen,
+  setDescriptionModalService
 }: {
   service: any;
   setSelectedService: React.Dispatch<React.SetStateAction<any>>;
   setReserveModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setDescriptionModalService: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const handleSelectService = () => {
     setReserveModalOpen(true);
     setSelectedService(service.name);
   };
+
+  const handleServiceDetails = () => {
+    setDescriptionModalService(service);
+  }
 
   return (
     <div className="border-borderGray flex w-full flex-col gap-4 rounded-lg border bg-white p-4">
@@ -30,7 +36,7 @@ export default function ServiceCard({
         </div>
       </div>
       <div className="flex items-center justify-between">
-        <button className="font-semibold text-darkGray">تفاصيل الخدمة</button>
+        <button className="font-semibold text-darkGray" onClick={handleServiceDetails}>تفاصيل الخدمة</button>
         <button
           className="h-[39px] w-[93px] rounded-lg border border-primary text-sm text-primary"
           onClick={handleSelectService}

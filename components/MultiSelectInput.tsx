@@ -20,7 +20,6 @@ const MultiSelectInput = ({
   const handleChange = (
     newValue: ReadonlyArray<{ value: string; label: string }>,
   ) => {
-    // console.log(newValue);
     setValue(newValue as any);
   };
 
@@ -28,8 +27,6 @@ const MultiSelectInput = ({
     value: option.name,
     label: option.name,
   }));
-
-  console.log("value", value);
 
   return (
     <div

@@ -16,9 +16,11 @@ import CloseIcon from "@/icons/CloseIcon";
 import TextInput from "@/components/TextInput";
 import DatePicker from "@/components/DatePicker";
 import { periods } from "./mockups/periods";
-import { Option } from "@/lib/types";
+import { Option, Reservation, Service } from "@/lib/types";
 import MultiSelectInput from "@/components/MultiSelectInput";
 import SelectInput from "@/components/SelectInput";
+import ConfirmationIcon from "@/icons/ConfirmationIcon";
+import { translate } from "./mockups/translate";
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -48,8 +50,12 @@ export default function Home() {
   };
 
   const [reserveModalOpen, setReserveModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState("");
+  const [descriptionModalService, setDescriptionModalService] =
+    useState<Service | null>(null);
 
+  const [reservationDetails, setReservationDetails] =
+    useState<Reservation | null>();
+  const [selectedService, setSelectedService] = useState("");
   const [reservedServices, setReservedServices] = useState<Option[]>([]);
 
   useEffect(() => {
@@ -67,16 +73,17 @@ export default function Home() {
     const formData = new FormData(e.target as HTMLFormElement);
 
     // Convert formData entries to an object
-    let data: { [key: string]: any } = Object.fromEntries(formData.entries());
+    let data: any = Object.fromEntries(formData.entries());
 
     // Check if reservedServices is null, and handle accordingly
     if (!reservedServices || reservedServices.length == 0) {
-      data.services = [];
+      data= {services: [], ...data}
     } else {
-      data.services = reservedServices.map((service) => service.value);
+      data = {services: reservedServices.map((service) => service.value), ...data}
     }
 
     console.log("Reservation data:", data);
+    setReservationDetails(data);
     setReserveModalOpen(false);
   };
 
@@ -128,6 +135,7 @@ export default function Home() {
               service={service}
               setSelectedService={setSelectedService}
               setReserveModalOpen={setReserveModalOpen}
+              setDescriptionModalService={setDescriptionModalService}
             />
           ))}
         </div>
@@ -259,6 +267,133 @@ export default function Home() {
             </button>
           </form>
         </Modal>
+
+        {!!descriptionModalService && (
+          <Modal
+            showModal={!!descriptionModalService}
+            setShowModal={(open) => {
+              if (!open) setDescriptionModalService(null);
+            }}
+          >
+            <div className="description_modal relative z-[100] flex flex-col p-7">
+              <div className="mb-4 flex w-full items-center justify-between">
+                <h2 className="text-2xl font-bold text-black">
+                  {descriptionModalService.name}
+                </h2>
+                <CloseIcon
+                  onClick={() => setDescriptionModalService(null)}
+                  width={24}
+                  height={24}
+                  className="cursor-pointer"
+                />
+              </div>
+
+              <ImageGallery
+                items={images}
+                showThumbnails={true}
+                showFullscreenButton={false}
+                showPlayButton={false}
+                showBullets={false}
+                showNav={false}
+              />
+
+              <h3 className="mb-2.5 text-sm font-bold text-black">
+                وصف الخدمة
+              </h3>
+
+              <p className="mb-2.5 text-justify text-sm text-lightGray">
+                {descriptionModalService.description ?? "لا يوجد وصف"}
+              </p>
+
+              <p className="text-highlight mb-7 text-sm font-medium">
+                * تم حجز الخدمة{" "}
+                {descriptionModalService.reservationsCount ?? "0"} مرة{" "}
+              </p>
+
+              <div className="flex items-center justify-between">
+                <button
+                  className="rounded-lg border border-primary bg-transparent px-6 py-3 font-bold text-primary"
+                  onClick={() => setDescriptionModalService(null)}
+                >
+                  إغلاق
+                </button>
+                <button
+                  className="rounded-lg border border-primary bg-primary px-6 py-3 font-bold text-white"
+                  onClick={() => {
+                    setSelectedService(descriptionModalService.name);
+                    setReserveModalOpen(true);
+                  }}
+                >
+                  حجز
+                </button>
+              </div>
+            </div>
+          </Modal>
+        )}
+
+        {!!reservationDetails && (
+          <Modal
+            showModal={!!reservationDetails}
+            setShowModal={(open) => {
+              if (!open) setReservationDetails(null);
+            }}
+          >
+            <div className="description_modal relative z-[100] flex flex-col p-7">
+              <div className="mb-4 flex w-full items-center justify-between">
+                <h2 className="text-2xl font-bold text-black">تأكيد الحجز</h2>
+                <CloseIcon
+                  onClick={() => setReservationDetails(null)}
+                  width={24}
+                  height={24}
+                  className="cursor-pointer"
+                />
+              </div>
+
+              <ConfirmationIcon className="m-auto mb-6 w-full" />
+
+              <h2 className="mb-2 text-center text-xl font-semibold text-black">
+                تم الحجز بنجاح!
+              </h2>
+
+              <h3 className="mb-2.5 text-sm font-bold text-black">
+                ملخص الحجز
+              </h3>
+
+              <div className="rounded-lg bg-[#F5F5F5] p-3 mb-5">
+                {Object.entries(reservationDetails).map(([key, value]) => (
+                  <p className="text-xs text-black">
+                    <span className="font-semibold">
+                      {translate[key as keyof Reservation]}:
+                    </span>
+                    {" "}
+                    <span className="font-bold ">
+                      {key == "services" && typeof value == "object"
+                        ? value.join(", ")
+                        : value}
+                    </span>
+                  </p>
+                ))}
+              </div>
+
+              <div className="flex items-center justify-between">
+                <button
+                  className="rounded-lg border border-primary bg-transparent px-6 py-3 font-bold text-primary"
+                  onClick={() => setReservationDetails(null)}
+                >
+                  إغلاق
+                </button>
+                <button
+                  className="rounded-lg border border-primary bg-primary px-6 py-3 font-bold text-white"
+                  onClick={(e) => {
+                    e.preventDefault();
+                  }}
+                >
+                  أضف إلى التقويم
+                </button>
+              </div>
+            </div>
+          </Modal>
+        )}
       </div>
     </main>
   );
@@ -267,6 +402,7 @@ export default function Home() {
 const images = [
   {
     original: "./image1.png",
+    thumbnail: "./image1.png",
   },
   {
     original: "https://picsum.photos/id/1015/1000/600/",

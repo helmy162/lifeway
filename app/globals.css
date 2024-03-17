@@ -33,11 +33,34 @@ body {
   @apply !rounded-2xl;
   box-shadow: 0px 7px 11px 0px rgba(3, 9, 28, 0.15);
 }
+.description_modal .image-gallery-slides{
+  @apply !rounded-xl
+}
+.description_modal .image-gallery-image{
+  @apply !rounded-xl !h-auto aspect-[268/213];
+}
+.image-gallery-thumbnails-container{
+  @apply flex justify-center items-center;
+}
 
 .image-gallery-image{
   @apply !rounded-2xl !h-[262px] !object-cover;
 }
 
+.image-gallery-thumbnail-image{
+  @apply !rounded-xl !h-[72px] !object-cover;
+}
+
+.image-gallery-thumbnails{
+  @apply !pt-2;
+}
+.image-gallery-thumbnail{
+  @apply !rounded-xl hover:!border-transparent !flex-grow;
+}
+
+.image-gallery-thumbnail.active{
+  @apply !border-2 !border-primary;
+}
 
 
 /*scrollbar*/

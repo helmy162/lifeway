@@ -20,6 +20,7 @@ const config: Config = {
         darkGray: "#6C6C6C",
         borderGray: "#E4EAF0",
         footerBG: "#010112",
+        highlight: "#FF5603",
       },
     },
   },
