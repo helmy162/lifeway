@@ -5,7 +5,7 @@ import TelephoneIcon from "@/components/icons/TelephoneIcon";
 
 export default function Footer() {
   return (
-    <footer className="max-w-[375px] mx-auto">
+    <footer className="">
       <div className="bg-footerBG flex flex-col gap-4 px-4 py-8">
         <div className="flex items-center gap-4 text-lightGray">
           <LocationPointIcon width={24} height={24} />
