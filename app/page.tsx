@@ -1,16 +1,16 @@
 "use client";
 import Image from "next/image";
-import { EllipsesBackground } from "./components/EllipsesBackground";
+import { EllipsesBackground } from "../components/EllipsesBackground";
 import { useEffect, useState } from "react";
-import FilterButton from "./components/FilterButton";
-import ServiceCard from "./components/ServiceCard";
+import FilterButton from "../components/FilterButton";
+import ServiceCard from "../components/ServiceCard";
 import { services } from "./mockups/services";
 import { serviceTypes } from "./mockups/serviceTypes";
 import ImageGallery from "react-image-gallery";
-import WhatsappIcon from "./icons/WhatsappIcon";
-import InstagramIcon from "./icons/InstagramIcon";
-import SnapchatIcon from "./icons/SnapchatIcon";
-import LocationPinIcon from "./icons/LocationPinIcon";
+import WhatsappIcon from "../icons/WhatsappIcon";
+import InstagramIcon from "../icons/InstagramIcon";
+import SnapchatIcon from "../icons/SnapchatIcon";
+import LocationPinIcon from "../icons/LocationPinIcon";
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("all");

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import LocationPointIcon from "../icons/LocationPointIcon";
-import MailIcon from "../icons/MailIcon";
-import TelephoneIcon from "../icons/TelephoneIcon";
+import LocationPointIcon from "@/icons/LocationPointIcon";
+import MailIcon from "@/icons/MailIcon";
+import TelephoneIcon from "@/icons/TelephoneIcon";
 
 export default function Footer() {
   return (
