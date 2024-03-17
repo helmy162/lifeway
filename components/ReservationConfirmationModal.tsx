@@ -2,7 +2,7 @@ import CloseIcon from "@/components/icons/CloseIcon";
 import Modal from "./Modal";
 import { Reservation } from "@/lib/types";
 import ConfirmationIcon from "@/components/icons/ConfirmationIcon";
-import { translate } from "@/app/mockups/translate";
+import { translate } from "@/mockups/translate";
 
 export default function ReservationConfirmationModal({
   reservationDetails,

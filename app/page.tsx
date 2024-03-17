@@ -1,7 +1,7 @@
 "use client";
 import { EllipsesBackground } from "../components/EllipsesBackground";
 import { useEffect, useState } from "react";
-import { services } from "./mockups/services";
+import { services } from "../mockups/services";
 import { Option, Reservation, Service } from "@/lib/types";
 import ReservationModal from "@/components/ReservationModal";
 import DescriptionModal from "@/components/DescriptionModal";

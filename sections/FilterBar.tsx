@@ -1,4 +1,4 @@
-import { serviceTypes } from "@/app/mockups/serviceTypes";
+import { serviceTypes } from "@/mockups/serviceTypes";
 import FilterButton from "@/components/FilterButton";
 
 export default function FilterBar({

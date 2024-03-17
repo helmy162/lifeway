@@ -4,8 +4,8 @@ import MultiSelectInput from './MultiSelectInput';
 import TextInput from './TextInput';
 import DatePicker from './DatePicker';
 import SelectInput from './SelectInput';
-import { periods } from '@/app/mockups/periods';
-import { services } from '@/app/mockups/services';
+import { periods } from '@/mockups/periods';
+import { services } from '@/mockups/services';
 import { Option } from '@/lib/types';
 
 export default function ReservationModal({

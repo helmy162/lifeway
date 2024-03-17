@@ -1,4 +1,4 @@
-import { hotServciesImages } from "@/app/mockups/images";
+import { hotServciesImages } from "@/mockups/images";
 import ReactImageGallery from "react-image-gallery";
 
 export default function HotOffers() {

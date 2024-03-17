@@ -2,6 +2,7 @@ import InstagramIcon from "@/components/icons/InstagramIcon";
 import LocationPinIcon from "@/components/icons/LocationPinIcon";
 import SnapchatIcon from "@/components/icons/SnapchatIcon";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
+import { contacts } from "@/mockups/contacts";
 
 export default function StayInContact() {
   return (
@@ -14,7 +15,8 @@ export default function StayInContact() {
       </h3>
       <a
         className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5"
-        href="#"
+        href={contacts.whatsapp}
+        target="_blank"
       >
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white">
           <WhatsappIcon width={16} height={16} />
@@ -25,7 +27,8 @@ export default function StayInContact() {
       </a>
       <a
         className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5"
-        href="#"
+        href={contacts.snapchat}
+        target="_blank"
       >
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white">
           <SnapchatIcon width={16} height={16} />
@@ -36,7 +39,8 @@ export default function StayInContact() {
       </a>
       <a
         className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5"
-        href="#"
+        href={contacts.instagram}
+        target="_blank"
       >
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white">
           <InstagramIcon width={16} height={16} />
@@ -47,7 +51,8 @@ export default function StayInContact() {
       </a>
       <a
         className="flex items-center gap-1.5 rounded-[20px] bg-white p-2.5"
-        href="#"
+        href={contacts.location}
+        target="_blank"
       >
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-white">
           <LocationPinIcon width={16} height={16} />
