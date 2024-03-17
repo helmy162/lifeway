@@ -13,10 +13,12 @@ import SnapchatIcon from "../icons/SnapchatIcon";
 import LocationPinIcon from "../icons/LocationPinIcon";
 import Modal from "@/components/Modal";
 import CloseIcon from "@/icons/CloseIcon";
-import LabeledSelectInput from "@/components/Select";
 import TextInput from "@/components/TextInput";
 import DatePicker from "@/components/DatePicker";
 import { periods } from "./mockups/periods";
+import { Option } from "@/lib/types";
+import MultiSelectInput from "@/components/MultiSelectInput";
+import SelectInput from "@/components/SelectInput";
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -48,14 +50,35 @@ export default function Home() {
   const [reserveModalOpen, setReserveModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
 
+  const [reservedServices, setReservedServices] = useState<Option[]>([]);
+
+  useEffect(() => {
+    if (!selectedService) return;
+    setReservedServices((prev) => [
+      ...(prev || []),
+      { value: selectedService, label: selectedService },
+    ]);
+  }, [selectedService]);
+
   const handleReservation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Initialize FormData from the form
     const formData = new FormData(e.target as HTMLFormElement);
-    const data = Object.fromEntries(formData.entries());
+
+    // Convert formData entries to an object
+    let data: { [key: string]: any } = Object.fromEntries(formData.entries());
+
+    // Check if reservedServices is null, and handle accordingly
+    if (!reservedServices || reservedServices.length == 0) {
+      data.services = [];
+    } else {
+      data.services = reservedServices.map((service) => service.value);
+    }
+
     console.log("Reservation data:", data);
     setReserveModalOpen(false);
   };
-  
 
   return (
     <main className="relative w-full max-w-[100vw] overflow-x-hidden">
@@ -100,7 +123,12 @@ export default function Home() {
         {/* services grid */}
         <div className="mb-7 grid w-full grid-cols-1 gap-1.5">
           {paginatedServices.map((service: any) => (
-            <ServiceCard key={service.id} service={service} setSelectedService={setSelectedService} setReserveModalOpen={setReserveModalOpen} />
+            <ServiceCard
+              key={service.id}
+              service={service}
+              setSelectedService={setSelectedService}
+              setReserveModalOpen={setReserveModalOpen}
+            />
           ))}
         </div>
 
@@ -190,7 +218,10 @@ export default function Home() {
         </div>
 
         <Modal showModal={reserveModalOpen} setShowModal={setReserveModalOpen}>
-          <form className="relative z-[100] flex flex-col gap-4 p-7" onSubmit={handleReservation}>
+          <form
+            className="relative z-[100] flex flex-col gap-4 p-7"
+            onSubmit={handleReservation}
+          >
             <div className="flex w-full items-center justify-between">
               <h2 className="text-2xl font-bold text-black">حجز موعد</h2>
               <CloseIcon
@@ -200,15 +231,30 @@ export default function Home() {
                 className="cursor-pointer"
               />
             </div>
-            <LabeledSelectInput name="service" label="الخدمة" options={services} startingValue={selectedService}  />
+            <MultiSelectInput
+              name="service"
+              label="الخدمة"
+              options={services}
+              startingValue={selectedService}
+              value={reservedServices}
+              setValue={setReservedServices}
+            />
             <TextInput name="name" label="الاسم" placeholder="الاسم هنا..." />
-            <TextInput name="phone" label="رقم الجوال" placeholder="05xxxxxxxx" type="tel" />
+            <TextInput
+              name="phone"
+              label="رقم الجوال"
+              placeholder="05xxxxxxxx"
+              type="tel"
+            />
             <DatePicker />
-            <LabeledSelectInput name="period" label="الفترة" options={periods} />
+            <SelectInput name="period" label="الفترة" options={periods} />
             <h3 className="text-sm font-normal text-lightGray">
               يمكنك الآن حجز موعدك من خلال الضغط على الزر أدناه
             </h3>
-            <button className="py-3 px-6 rounded-lg border-2 bg-primary font-bold text-white" type="submit">
+            <button
+              className="rounded-lg border-2 bg-primary px-6 py-3 font-bold text-white"
+              type="submit"
+            >
               حجز
             </button>
           </form>

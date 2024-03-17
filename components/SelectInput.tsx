@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LabeledSelectInput = ({
+const SelectInput = ({
   options,
   name,
   label,
@@ -33,4 +33,4 @@ const LabeledSelectInput = ({
   );
 };
 
-export default LabeledSelectInput;
+export default SelectInput;
