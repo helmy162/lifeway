@@ -11,18 +11,39 @@ import { Option } from '@/lib/types';
 export default function ReservationModal({
   reserveModalOpen,
   setReserveModalOpen,
-  handleReservation,
   selectedService,
   reservedServices,
   setReservedServices,
+  setReservationDetails
 }: {
   reserveModalOpen: boolean;
   setReserveModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  handleReservation: (e: React.FormEvent<HTMLFormElement>) => void;
   selectedService: string;
   reservedServices: Option[];
   setReservedServices: (services: Option[]) => void;
+  setReservationDetails: React.Dispatch<React.SetStateAction<any>>;
 }) {
+
+  const handleReservation = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    let data: any = Object.fromEntries(formData.entries());
+
+    // Check if reservedServices is null, and handle accordingly
+    if (!reservedServices || reservedServices.length == 0) {
+      data = { services: [], ...data };
+    } else {
+      data = {
+        services: reservedServices.map((service) => service.value),
+        ...data,
+      };
+    }
+
+    console.log("Reservation data:", data); // handle the data here
+
+    setReservationDetails(data); // set the reservation details
+    setReserveModalOpen(false); // close the modal
+  };
   return (
     <Modal showModal={reserveModalOpen} setShowModal={setReserveModalOpen}>
       <form

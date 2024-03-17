@@ -1,18 +1,8 @@
 "use client";
-import Image from "next/image";
 import { EllipsesBackground } from "../components/EllipsesBackground";
 import { useEffect, useState } from "react";
-import FilterButton from "../components/FilterButton";
-import ServiceCard from "../components/ServiceCard";
 import { services } from "./mockups/services";
-import { serviceTypes } from "./mockups/serviceTypes";
-import ImageGallery from "react-image-gallery";
-import WhatsappIcon from "../icons/WhatsappIcon";
-import InstagramIcon from "../icons/InstagramIcon";
-import SnapchatIcon from "../icons/SnapchatIcon";
-import LocationPinIcon from "../icons/LocationPinIcon";
 import { Option, Reservation, Service } from "@/lib/types";
-import { hotServciesImages } from "./mockups/images";
 import ReservationModal from "@/components/ReservationModal";
 import DescriptionModal from "@/components/DescriptionModal";
 import ReservationConfirmationModal from "@/components/ReservationConfirmationModal";
@@ -66,29 +56,7 @@ export default function Home() {
     ]);
   }, [selectedService]);
 
-  const handleReservation = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // Initialize FormData from the form
-    const formData = new FormData(e.target as HTMLFormElement);
-
-    // Convert formData entries to an object
-    let data: any = Object.fromEntries(formData.entries());
-
-    // Check if reservedServices is null, and handle accordingly
-    if (!reservedServices || reservedServices.length == 0) {
-      data = { services: [], ...data };
-    } else {
-      data = {
-        services: reservedServices.map((service) => service.value),
-        ...data,
-      };
-    }
-
-    console.log("Reservation data:", data);
-    setReservationDetails(data);
-    setReserveModalOpen(false);
-  };
+  
 
   return (
     <main className="relative w-full max-w-[100vw] overflow-x-hidden">
@@ -121,10 +89,10 @@ export default function Home() {
         <ReservationModal
           reserveModalOpen={reserveModalOpen}
           setReserveModalOpen={setReserveModalOpen}
-          handleReservation={handleReservation}
           selectedService={selectedService}
           reservedServices={reservedServices}
           setReservedServices={setReservedServices}
+          setReservationDetails={setReservationDetails}
         />
 
         <DescriptionModal

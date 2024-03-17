@@ -1,18 +1,25 @@
-import CloseIcon from '@/icons/CloseIcon';
-import Modal from './Modal';
-import { Reservation } from '@/lib/types';
-import ConfirmationIcon from '@/icons/ConfirmationIcon';
-import { translate } from '@/app/mockups/translate';
+import CloseIcon from "@/icons/CloseIcon";
+import Modal from "./Modal";
+import { Reservation } from "@/lib/types";
+import ConfirmationIcon from "@/icons/ConfirmationIcon";
+import { translate } from "@/app/mockups/translate";
 
 export default function ReservationConfirmationModal({
   reservationDetails,
   setReservationDetails,
 }: {
   reservationDetails: Reservation | null;
-  setReservationDetails: React.Dispatch<React.SetStateAction<Reservation | null>>;
- 
+  setReservationDetails: React.Dispatch<
+    React.SetStateAction<Reservation | null>
+  >;
 }) {
-  if(!reservationDetails) return null;
+
+  const handleAddToCalendar = (e: React.MouseEvent) => {
+    e.preventDefault();
+    console.log("Add to calendar");
+  };
+
+  if (!reservationDetails) return null;
   return (
     <Modal
       showModal={!!reservationDetails}
@@ -45,10 +52,10 @@ export default function ReservationConfirmationModal({
             <p className="text-xs text-black">
               <span className="font-semibold">
                 {translate[key as keyof Reservation]}:
-              </span>{' '}
+              </span>{" "}
               <span className="font-bold ">
-                {key == 'services' && typeof value == 'object'
-                  ? value.join(', ')
+                {key == "services" && typeof value == "object"
+                  ? value.join(", ")
                   : value}
               </span>
             </p>
@@ -64,9 +71,7 @@ export default function ReservationConfirmationModal({
           </button>
           <button
             className="rounded-lg border border-primary bg-primary px-6 py-3 font-bold text-white"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
+            onClick={handleAddToCalendar}
           >
             أضف إلى التقويم
           </button>
