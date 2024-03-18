@@ -42,6 +42,7 @@ const MultiSelectInput = ({
         value={value}
         isMulti
         onChange={handleChange}
+        placeholder="اختر..."
       />
     </div>
   );
