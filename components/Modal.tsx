@@ -24,7 +24,7 @@ export default function Modal({
         <Dialog.Content
           onOpenAutoFocus={(e) => e.preventDefault()}
           onCloseAutoFocus={(e) => e.preventDefault()}
-          className={`animate-scale-in fixed inset-0 z-50 m-auto max-h-[90vh] max-h-[90dvh] w-[90%] max-w-md overflow-auto rounded-xl border border-gray-200 bg-white p-0 shadow-xl ${className}`}
+          className={`animate-scale-in fixed inset-0 z-50 m-auto h-fit max-h-[90vh] max-h-[90dvh] w-[90%] max-w-md overflow-auto rounded-xl border border-gray-200 bg-white p-0 shadow-xl ${className}`}
           // Improve scrolling on iOS devices
           style={{ WebkitOverflowScrolling: "touch"}}
         >
