@@ -12,6 +12,7 @@ import Header from "@/sections/Header";
 import FilterBar from "@/sections/FilterBar";
 import ServicesGrid from "@/sections/ServicesGrid";
 import ShowMoreButton from "@/sections/ShowMoreButton";
+import CustomersOpinion from "@/sections/CustomersOpinion";
 
 export default function HomePage() {
     const [activeFilter, setActiveFilter] = useState("all");
@@ -78,6 +79,8 @@ export default function HomePage() {
         />
 
         <HotOffers />
+
+        <CustomersOpinion />
 
         <StayInContact />
 

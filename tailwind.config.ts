@@ -22,6 +22,7 @@ const config: Config = {
         borderGray: "#E4EAF0",
         footerBG: "#010112",
         highlight: "#FF5603",
+        star: "#F7C64F"
       },
     },
   },

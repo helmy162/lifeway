@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Footer from "../components/Footer";
 import "./globals.css";
 import "react-image-gallery/styles/css/image-gallery.css";
-import Footer from "../components/Footer";
+import 'react-alice-carousel/lib/alice-carousel.css' 
 
 export const metadata: Metadata = {
   title: "Create Next App",
