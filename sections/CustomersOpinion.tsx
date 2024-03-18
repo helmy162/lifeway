@@ -8,7 +8,7 @@ export default function CustomersOpinion() {
       <div className="mb-4 flex flex-col gap-4 px-6 text-center">
         <h2 className="text-[28px] font-bold text-black">آراء العملاء </h2>
         <h3 className="text-sm font-normal text-lightGray">
-          تعرف على أحدث عروض مجمع طرق الحياة الطبي للاستفادة منها
+          تعرف على آراء عملائنا حول خدماتنا
         </h3>
       </div>
 
