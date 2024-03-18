@@ -82,3 +82,10 @@ body {
 .fancy-scroll::-webkit-scrollbar-thumb:hover:hover{
   @apply bg-darkGray
 }
+
+/* hide the scrollbar on touch screens (mobile or tablet) */
+@media (hover: none), (pointer: coarse){
+  .fancy-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
